@@ -1,0 +1,6 @@
+# Robots.txt for Luna Malatya Masaj & Spa (https://masajmalatya.com.tr/)
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://masajmalatya.com.tr/sitemap.xml
