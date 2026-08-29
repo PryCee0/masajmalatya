@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-radial-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(212, 163, 115, 0.15) 0%, rgba(28, 25, 23, 0) 70%);
+  }
+}
