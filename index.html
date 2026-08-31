@@ -70,15 +70,25 @@
             'event': action,
             'event_category': 'Engagement',
             'event_label': label,
-            'value': value || 0
+            'value': value || 100.0
           });
         }
         if (typeof gtag === 'function') {
           gtag('event', action, {
             'event_category': 'Engagement',
             'event_label': label,
-            'value': value || 0
+            'value': value || 100.0
           });
+
+          // WhatsApp, Paket Rezervasyonu ve Telefon Tıklamalarında Google Ads Dönüşümünü Tetikle
+          if (action === 'whatsapp_click' || action === 'booking_click' || action === 'call_click') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18397565869/uGx9CKbNjOscEK2n0sRE',
+              'value': 100.0,
+              'currency': 'TRY'
+            });
+            console.log('Google Ads Conversion Triggered:', action, label);
+          }
         }
       }
     </script>
