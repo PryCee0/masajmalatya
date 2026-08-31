@@ -64,32 +64,26 @@
 
       gtag('config', 'AW-18397565869');
 
-      function trackConversion(action, label, value) {
-        if (window.dataLayer) {
-          window.dataLayer.push({
-            'event': action,
-            'event_category': 'Engagement',
-            'event_label': label,
-            'value': value || 100.0
-          });
-        }
+            function trackConversion(action, label, value) {
         if (typeof gtag === 'function') {
-          gtag('event', action, {
-            'event_category': 'Engagement',
-            'event_label': label,
-            'value': value || 100.0
-          });
-
-          // WhatsApp, Paket Rezervasyonu ve Telefon Tıklamalarında Google Ads Dönüşümünü Tetikle
+          // WhatsApp, Telefon ve Paket Rezervasyonu Tıklamalarında Tek ve Net Dönüşüm Gönder
           if (action === 'whatsapp_click' || action === 'booking_click' || action === 'call_click') {
             gtag('event', 'conversion', {
               'send_to': 'AW-18397565869/uGx9CKbNjOscEK2n0sRE',
-              'value': 100.0,
-              'currency': 'TRY'
+              'value': value || 100.0,
+              'currency': 'TRY',
+              'event_category': 'Engagement',
+              'event_label': label
             });
-            console.log('Google Ads Conversion Triggered:', action, label);
+          } else {
+            gtag('event', action, {
+              'event_category': 'Engagement',
+              'event_label': label,
+              'value': value || 0
+            });
           }
         }
+      }
       }
     </script>
 
